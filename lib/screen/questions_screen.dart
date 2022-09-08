@@ -10,7 +10,7 @@ class QuestionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Online Quiz")),
+      appBar: AppBar(title: Text("Online Quizzz")),
       body: Container(
         child: Center(
           child: Text(
