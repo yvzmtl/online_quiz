@@ -1,11 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:online_quiz/const/const.dart';
 import 'package:online_quiz/screen/menu.dart';
+import 'package:online_quiz/screen/myquestions_screen.dart';
+import 'package:online_quiz/screen/siralama_screen.dart';
+import 'package:online_quiz/screen/suggestion_questions.dart';
 import 'package:online_quiz/state/category_state.dart';
 import 'package:online_quiz/strings/main_strings.dart';
 import 'package:online_quiz/view_model/category_home_vm/category_home_vm_imp.dart';
+import 'package:online_quiz/view_model/menu_vm/menu_view_model_imp.dart';
 import 'package:online_quiz/widget/category/category_list_widget.dart';
+import 'package:online_quiz/widget/menu/menu_widget.dart';
+import 'package:online_quiz/widget/menu/menu_widget_callback.dart';
 import 'model/category_model.dart';
 
 Future<void> main() async {
@@ -32,8 +40,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  final viewModel = CategoryHomeViewModelImp();
-
+  final categoryviewModel = CategoryHomeViewModelImp();
+  final viewModel = MenuViewModelImp();
   MyHomePage();
 
   @override
@@ -41,7 +49,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<MyHomePage> {
-  final viewModel = CategoryHomeViewModelImp();
   final CategoryStateController categoryStateController =
       Get.put(CategoryStateController());
 
@@ -56,8 +63,8 @@ class MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         elevation: 10,
       ),
-      drawer: MenuScreen(),
-      /*drawer: Drawer(
+      //drawer: MenuScreen(),
+      drawer: Drawer(
         backgroundColor: Color(COLOR_OVERLAY),
         child: ListView(
           padding: EdgeInsets.zero,
@@ -82,63 +89,56 @@ class MyHomePageState extends State<MyHomePage> {
               ),
               currentAccountPicture: FlutterLogo(),
             ),
+            //MenuScreen()
+            Divider(
+              thickness: 2,
+            ),
             MenuWidget(
-              icon:Icons.short_text,
-              menuName: siralamaText,
-              callback: ,
+                menuName: siralamaText,
+                callback: widget.viewModel.navigateSiralama,
+                icon: Icons.short_text_rounded),
+            Divider(
+              thickness: 2,
+            ),
+            MenuWidget(
+                menuName: myQuestionsText,
+                callback: widget.viewModel.navigateMyQuestions,
+                icon: Icons.question_answer),
+            Divider(
+              thickness: 2,
+            ),
+            MenuWidget(
+                menuName: suggestionQuestionsText,
+                callback: widget.viewModel.navigateSuggestionQuestions,
+                icon: Icons.question_mark),
+            Divider(
+              thickness: 2,
+            ),
 
-            )
-            ListTile(
-              leading: Icon(
-                Icons.short_text,
-                color: Colors.white,
-                size: 18,
-              ),
-              title: Text(
-                "Sıralama",
-                style: GoogleFonts.jetBrainsMono(
-                    color: Colors.white,
-                    fontStyle: FontStyle.italic,
-                    fontSize: 16),
-              ),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.question_answer,
-                color: Colors.white,
-                size: 18,
-              ),
-              title: Text(
-                "Soru Öner",
-                style: GoogleFonts.jetBrainsMono(
-                    color: Colors.white,
-                    fontStyle: FontStyle.italic,
-                    fontSize: 16),
-              ),
-            ),
             Divider(color: Colors.white),
             Spacer(
               flex: 2,
             ),
-            ListTile(
-              leading: Icon(
-                Icons.login,
-                color: Colors.white,
-                size: 18,
-              ),
-              title: Text(
-                "Giriş Yap",
-                style: GoogleFonts.jetBrainsMono(
-                    color: Colors.white,
-                    fontStyle: FontStyle.italic,
-                    fontSize: 16),
-              ),
-            ),
+            MenuWidget(
+                menuName: loginnText,
+                callback: widget.viewModel.navigateLogin,
+                icon: Icons.login),
+            /* MenuWidgetCallback(
+              icon: widget.viewModel.checkLoginState(context)
+                  ? Icons.logout
+                  : Icons.login,
+              menuName: widget.viewModel.checkLoginState(context)
+                  ? logouttText
+                  : loginnText,
+              callback: widget.viewModel.checkLoginState(context)
+                  ? widget.viewModel.logout
+                  : widget.viewModel.login,
+            ), */
           ],
         ),
-      ),*/
+      ),
       body: FutureBuilder(
-        future: widget.viewModel.displayCategoryList(),
+        future: widget.categoryviewModel.displayCategoryList(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(

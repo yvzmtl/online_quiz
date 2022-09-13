@@ -5,6 +5,8 @@ abstract class MenuViewModel {
   void navigateSiralama();
   void navigateHomeScreen();
   void navigateSuggestionQuestions();
+  void navigateLogin();
+  void navigateRegister();
   bool checkLoginState(BuildContext context);
   void login(BuildContext context);
   void logout(BuildContext context);

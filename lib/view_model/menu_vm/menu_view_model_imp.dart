@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth_ui/flutter_auth_ui.dart';
 import 'package:get/get.dart';
 import 'package:online_quiz/main.dart';
+import 'package:online_quiz/screen/login_screen.dart';
 import 'package:online_quiz/screen/myquestions_screen.dart';
+import 'package:online_quiz/screen/register_screen.dart';
 import 'package:online_quiz/screen/siralama_screen.dart';
 import 'package:online_quiz/screen/suggestion_questions.dart';
 import 'package:online_quiz/strings/main_strings.dart';
@@ -69,5 +71,15 @@ class MenuViewModelImp implements MenuViewModel {
   @override
   void navigateSuggestionQuestions() {
     Get.to(() => SuggestionQuestionsScreen());
+  }
+
+  @override
+  void navigateLogin() {
+    Get.to(() => LoginScreen());
+  }
+
+  @override
+  void navigateRegister() {
+    Get.to(() => RegisterScreen());
   }
 }
