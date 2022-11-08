@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_quiz/const/const.dart';
-import 'package:online_quiz/screen/menu.dart';
-import 'package:online_quiz/screen/myquestions_screen.dart';
-import 'package:online_quiz/screen/siralama_screen.dart';
-import 'package:online_quiz/screen/suggestion_questions.dart';
 import 'package:online_quiz/state/category_state.dart';
 import 'package:online_quiz/strings/main_strings.dart';
 import 'package:online_quiz/view_model/category_home_vm/category_home_vm_imp.dart';
 import 'package:online_quiz/view_model/menu_vm/menu_view_model_imp.dart';
 import 'package:online_quiz/widget/category/category_list_widget.dart';
 import 'package:online_quiz/widget/menu/menu_widget.dart';
-import 'package:online_quiz/widget/menu/menu_widget_callback.dart';
 import 'model/category_model.dart';
 
 Future<void> main() async {
