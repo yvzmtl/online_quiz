@@ -23,7 +23,7 @@ class CategoryListWidget extends StatelessWidget {
       children: [
         Expanded(
           child: LiveGrid(
-            showItemInterval: Duration(milliseconds: 310),
+            showItemInterval: Duration(milliseconds: 300),
             showItemDuration: Duration(milliseconds: 300),
             reAnimateOnVisibility: true,
             scrollDirection: Axis.vertical,
