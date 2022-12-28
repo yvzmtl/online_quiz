@@ -36,7 +36,9 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   final categoryviewModel = CategoryHomeViewModelImp();
+  // final categoryviewModel = Get.put(CategoryHomeViewModelImp());
   final viewModel = MenuViewModelImp();
+  //final viewModel = Get.put(MenuViewModelImp);
   MyHomePage();
 
   @override
@@ -56,6 +58,15 @@ class MyHomePageState extends State<MyHomePage> {
           style: TextStyle(fontWeight: FontWeight.w900, color: Colors.black),
         ),
         backgroundColor: Colors.white,
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(
+              Icons.menu_rounded,
+              color: Colors.black,
+            ),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
         elevation: 10,
       ),
       //drawer: MenuScreen(),

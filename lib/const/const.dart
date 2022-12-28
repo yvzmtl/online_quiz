@@ -1,4 +1,5 @@
 const CATEGORY_REF = "Category";
+const QUESTIONS_REF = "Questions";
 
 const COLOR_MENU_BG = 0xFFB71C1C;
 const COLOR_ICON_DRAWER = 0xFF7F0000;
