@@ -29,10 +29,10 @@ class QuestionModel {
     required this.answerB,
     required this.answerC,
     required this.answerD,
-    required this.categoryId,
+    required this.categoryid,
     required this.correctAnswer,
     required this.point,
-    //required this.question,
+    required this.question,
   });
 
   String id;
@@ -40,10 +40,10 @@ class QuestionModel {
   String answerB;
   String answerC;
   String answerD;
-  String categoryId;
+  String categoryid;
   String correctAnswer;
   String point;
-  // String question;
+  String question;
 
   factory QuestionModel.fromJson(Map<String, dynamic> json) => QuestionModel(
         id: json["id"],
@@ -51,10 +51,10 @@ class QuestionModel {
         answerB: json["answerB"],
         answerC: json["answerC"],
         answerD: json["answerD"],
-        categoryId: json["categoryId"],
+        categoryid: json["categoryid"],
         correctAnswer: json["correctAnswer"],
         point: json["point"],
-        // question: json["question"],
+        question: json["question"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -63,9 +63,9 @@ class QuestionModel {
         "answerB": answerB,
         "answerC": answerC,
         "answerD": answerD,
-        "categoryId": categoryId,
+        "categoryId": categoryid,
         "correctAnswer": correctAnswer,
         "point": point,
-        // "question": question,
+        "question": question,
       };
 }
