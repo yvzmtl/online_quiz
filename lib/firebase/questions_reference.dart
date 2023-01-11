@@ -32,7 +32,7 @@ Future<List<QuestionModel>> getQuestions(String categoryid) async {
 
   var source = await FirebaseFirestore.instance
       .collection(QUESTIONS_REF)
-      .where(categoryid)
+      .where("categoryid", isEqualTo: categoryid)
       .get();
 
   var values = source.docs;
